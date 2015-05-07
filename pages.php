@@ -8,6 +8,7 @@
 				LEFT JOIN employees ON salaries.emp_no=employees.emp_no ORDER BY salary DESC LIMIT 1;');
 
 			echo "<table>";
+			echo "<tr><td> <b>First Name</b> </td><td> Last Name </td><td> Salary </td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td><td> $value[2] </td></tr>";
 			}
@@ -25,6 +26,7 @@
 				salaries.to_date<=\'1985-12-31\' ORDER BY salaries.salary DESC LIMIT 1;');
 
 			echo "<table>";
+			echo "<tr><td> First Name </td><td> Last Name </td><td> Salary </td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td><td> $value[2] </td></tr>";
 			}
@@ -43,6 +45,7 @@
 				salaries.salary DESC LIMIT 1;');
 
 			echo "<table>";
+			echo "<tr><td> Department </td><td> Salary </td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td></tr>";
 			}
@@ -58,6 +61,7 @@
 			$qry = $db->query('SELECT DISTINCT dept_name FROM departments;');
 
 			echo "<table>";
+			echo "<tr><td> Departments </td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td></tr>";
 			}
@@ -70,11 +74,12 @@
 		function __construct(){
 			global $db;
 
-			$qry = $db->query('SELECT deptartments.dept_name, dept_manager.emp_no, employees.first_name, employees.last_name
+			$qry = $db->query('SELECT departments.dept_name, dept_manager.emp_no, employees.first_name, employees.last_name
 				FROM departments, dept_manager LEFT JOIN employees ON dept_manager.emp_no=employees.emp_no WHERE 
 				departments.dept_no=dept_manager.dept_no AND dept_manager.to_date=\'9999-01-01\';');
 
 			echo "<table>";
+			echo "<tr><td> Departments </td><td> ID </td><td> First Name </td><td> Last Name </td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td><td> $value[2] </td><td> $value[3] </td></tr>";
 			}
@@ -93,6 +98,7 @@
 				dept_emp.to_date=\'9999-01-01\' ORDER BY salaries.salary DESC LIMIT 1;');
 
 			echo "<table>";
+			echo "<tr><td> First Name </td><td> Last Name </td><td> Salary </td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td><td> $value[2] </td></tr>";
 			}
@@ -110,6 +116,7 @@
 				salaries.to_date=\'9999-01-01\' order by salaries.salary limit 1;');
 
 			echo "<table>";
+			echo "<tr><td> ID </td><td> Salary </td><td> First Name </td><td> Last Name </td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td><td> $value[2] </td><td> $value[3] </td></tr>";
 			}
@@ -126,6 +133,7 @@
 				LEFT JOIN departments ON dept_emp.dept_no=departments.dept_no WHERE to_date=\'9999-01-01\' GROUP BY dept_emp.dept_no;');
 
 			echo "<table>";
+			echo "<tr><td> Departments </td><td> Number of Employees </td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td></tr>";
 			}
@@ -143,6 +151,7 @@
 				AND salaries.to_date=\'9999-01-01\' GROUP BY dept_emp.dept_no;');
 
 			echo "<table>";
+			echo "<tr><td> Departments </td><td> Salary Expenditures </td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td></tr>";
 			}
@@ -158,6 +167,7 @@
 			$qry = $db->query('SELECT sum(salary) FROM salaries WHERE to_date=\'9999-01-01\';');
 
 			echo "<table>";
+			echo "<tr><td> Total Current Expenditures </td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td></tr>";
 			}
