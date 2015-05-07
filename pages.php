@@ -180,7 +180,38 @@
 		function __construct(){
 			global $db;
 
-			echo "insert page";
+
+			echo "<h2> Insert Entry </h2>";
+			echo "<table>";
+			echo "<form method=\"POST\">";
+			echo "<tr><th>ID</th><td><input required name=\"emp_no\" type=\"text\"></td><tr>";
+			echo "<tr><th>Birthdate</th><td><input required name=\"birth\" type=\"date\"></td><tr>";
+			echo "<tr><th>First Name</th><td><input required name=\"first\" type=\"text\"></td><tr>";
+			echo "<tr><th>Last Name</th><td><input required name=\"last\" type=\"text\"></td><tr>";
+			echo "<tr><th>Gender</th><td><input name=\"gend\" type=\"radio\" value=\"F\" checked> Female <input name=\"gend\" type=\"radio\" value=\"M\"> Male </td><tr>";
+			echo "<tr><th>Hiredate</th><td><input required name=\"hire\" type=\"date\"></td><tr>";
+			echo "<tr><th><input type=\"submit\" value=\"insert\"> <input type=\"hidden\" name=\"runner\" value=\"true\"></th><td></td><tr>";
+			echo "</form>";
+			echo "</table>";
+
+			if(isset($_POST['runner'])){
+
+				$sql = "INSERT INTO employees(emp_no, birth_date, first_name, last_name, gender, hire_date)
+						VALUES (:eid, :bdate, :fname, :lname, :gen, :hdate)";
+
+				$qry = $db->prepare($sql);
+			
+				$qry->bindParam(':eid', $_POST['emp_no'], PDO::PARAM_STR);
+				$qry->bindParam(':bdate', $_POST['birth'], PDO::PARAM_STR);
+				$qry->bindParam(':fname', $_POST['first'], PDO::PARAM_STR);
+				$qry->bindParam(':lname', $_POST['last'], PDO::PARAM_STR);
+				$qry->bindParam(':gen', $_POST['gend'], PDO::PARAM_STR);
+				$qry->bindParam(':hdate', $_POST['hire'], PDO::PARAM_STR);
+
+				$qry->execute();
+
+				echo "Employee was inserted.";
+			}
 		}
 	}
 
@@ -188,7 +219,17 @@
 		function __construct(){
 			global $db;
 
-			echo "update page";
+			echo "<h2> Update Entry </h2>";
+			echo "<table>";
+			echo "<form method=\"POST\">";
+			echo "<tr><th>ID</th><td><input readonly required name=\"emp_no\" type=\"text\" value=\"".$_POST['emp_no']."\"></td><tr>";
+			echo "<tr><th>Birthdate</th><td><input required name=\"birthdate\" type=\"date\" value=\"".$_POST['bdate']."\"></td><tr>";
+			echo "<tr><th>First Name</th><td><input required name=\"firstname\" type=\"text\" value=\"".$_POST['fname']."\"></td><tr>";
+			echo "<tr><th>Last Name</th><td><input required name=\"lastname\" type=\"text\" value=\"".$_POST['lname']."\"></td><tr>";
+			echo "<tr><th>Hiredate</th><td><input required name=\"hiredate\" type=\"date\" value=\"".$_POST['hdate']."\"></td><tr>";
+			echo "<input type=\"hidden\" name=\"update\" value=\"true\"> <input type=\"hidden\" name=\"display\" value=\"true\"> <input type=\"submit\" value=\"update\">";
+			echo "</form>";
+			echo "</table>";
 		}
 	}
 ?>
