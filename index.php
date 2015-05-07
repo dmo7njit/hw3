@@ -14,11 +14,13 @@
 
 	
 
-	if(isset($_REQUEST['page'])){
-		$qry = new $_REQUEST['page'];
+	if(isset($_GET['page'])){
+		$qry = new $_GET['page'];
 	} else {
+	echo "<h2> David O'Grady IS218 HW3 MySQL Queries</h2>";
+	echo "<h2> Please select a question below or insert or edit entry:";
 
-	echo "<table>";
+	echo "<table align="center">";
 	echo '<tr><th><a href="?page=page1"> Who is the highest paid employee?</a></th></tr>';
 	echo '<tr><th><a href="?page=page2"> Who is the highest paid employee between 1985 and 1981?</a></th></tr>';
 	echo '<tr><th><a href="?page=page3"> Which department currently has highest paid department manager?</a></th></tr>';
