@@ -5,22 +5,19 @@
 <body>
 
 <?php
-
 	error_reporting(-1);
 	ini_set('display_errors','On');
 	include 'pages.php';
-
-	$db = new PDO('mysql:host=localhost;dbname=employees;charset=utf8','root','jared1harry',array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
 	
-
+	$db = new PDO('mysql:host=localhost;dbname=employees;charset=utf8','root','jared1harry',array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+	
 	if(isset($_GET['page'])){
 		$qry = new $_GET['page'];
 	} else {
-	echo "<h2> David O'Grady IS218 HW3 MySQL Queries</h2>";
-	echo "<h2> Please select a question below or insert or edit entry:";
 
-	echo "<table align="center">";
+	echo "<h2> David O'Grady IS218 HW3 MySQL Queries</h2>";
+	echo "<h2> Please select a question below or insert or edit entry:</h2>";
+	echo "<table>";
 	echo '<tr><th><a href="?page=page1"> Who is the highest paid employee?</a></th></tr>';
 	echo '<tr><th><a href="?page=page2"> Who is the highest paid employee between 1985 and 1981?</a></th></tr>';
 	echo '<tr><th><a href="?page=page3"> Which department currently has highest paid department manager?</a></th></tr>';
@@ -34,10 +31,7 @@
 	echo '<tr><th><a href="?page=pageinsert">Insert entry.</a></th></tr>';
 	echo '<tr><th><a href="?page=pageupdate">Update entry.</a></th></tr>';
 	echo "</table>";
-
 	}
-
-
 ?>
 
 </body>
