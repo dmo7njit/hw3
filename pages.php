@@ -8,7 +8,7 @@
 				LEFT JOIN employees ON salaries.emp_no=employees.emp_no ORDER BY salary DESC LIMIT 1;');
 
 			echo "<table>";
-			echo "<tr><td> <b>First Name</b> </td><td> Last Name </td><td> Salary </td></tr>";
+			echo "<tr><td><b> First Name </b></td><td><b> Last Name </b></td><td><b> Salary </b></td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td><td> $value[2] </td></tr>";
 			}
@@ -26,7 +26,7 @@
 				salaries.to_date<=\'1985-12-31\' ORDER BY salaries.salary DESC LIMIT 1;');
 
 			echo "<table>";
-			echo "<tr><td> First Name </td><td> Last Name </td><td> Salary </td></tr>";
+			echo "<tr><td><b> First Name </b></td><td><b> Last Name </b></td><td><b> Salary </b></td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td><td> $value[2] </td></tr>";
 			}
@@ -45,7 +45,7 @@
 				salaries.salary DESC LIMIT 1;');
 
 			echo "<table>";
-			echo "<tr><td> Department </td><td> Salary </td></tr>";
+			echo "<tr><td><b> Department </b></td><td><b> Salary </b></td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td></tr>";
 			}
@@ -61,7 +61,7 @@
 			$qry = $db->query('SELECT DISTINCT dept_name FROM departments;');
 
 			echo "<table>";
-			echo "<tr><td> Departments </td></tr>";
+			echo "<tr><td><b> Departments </b></td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td></tr>";
 			}
@@ -79,7 +79,7 @@
 				departments.dept_no=dept_manager.dept_no AND dept_manager.to_date=\'9999-01-01\';');
 
 			echo "<table>";
-			echo "<tr><td> Departments </td><td> ID </td><td> First Name </td><td> Last Name </td></tr>";
+			echo "<tr><td><b> Departments </b></td><td><b> ID </b></td><td><b> First Name </b></td><td><b> Last Name </b></td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td><td> $value[2] </td><td> $value[3] </td></tr>";
 			}
@@ -98,7 +98,7 @@
 				dept_emp.to_date=\'9999-01-01\' ORDER BY salaries.salary DESC LIMIT 1;');
 
 			echo "<table>";
-			echo "<tr><td> First Name </td><td> Last Name </td><td> Salary </td></tr>";
+			echo "<tr><td><b> First Name </b></td><td><b> Last Name </b></td><td><b> Salary </b></td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td><td> $value[2] </td></tr>";
 			}
@@ -116,7 +116,7 @@
 				salaries.to_date=\'9999-01-01\' order by salaries.salary limit 1;');
 
 			echo "<table>";
-			echo "<tr><td> ID </td><td> Salary </td><td> First Name </td><td> Last Name </td></tr>";
+			echo "<tr><td><b> ID </b></td><td><b> Salary </b></td><td><b> First Name </b></td><td><b> Last Name </b></td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td><td> $value[2] </td><td> $value[3] </td></tr>";
 			}
@@ -133,7 +133,7 @@
 				LEFT JOIN departments ON dept_emp.dept_no=departments.dept_no WHERE to_date=\'9999-01-01\' GROUP BY dept_emp.dept_no;');
 
 			echo "<table>";
-			echo "<tr><td> Departments </td><td> Number of Employees </td></tr>";
+			echo "<tr><td><b> Departments </b></td><td><b> Number of Employees </b></td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td></tr>";
 			}
@@ -151,7 +151,7 @@
 				AND salaries.to_date=\'9999-01-01\' GROUP BY dept_emp.dept_no;');
 
 			echo "<table>";
-			echo "<tr><td> Departments </td><td> Salary Expenditures </td></tr>";
+			echo "<tr><td><b> Departments </b></td><td><b> Salary Expenditures </b></td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td><td> $value[1] </td></tr>";
 			}
@@ -167,7 +167,7 @@
 			$qry = $db->query('SELECT sum(salary) FROM salaries WHERE to_date=\'9999-01-01\';');
 
 			echo "<table>";
-			echo "<tr><td> Total Current Expenditures </td></tr>";
+			echo "<tr><td><b> Total Current Expenditures </b></td></tr>";
 			while($value = $qry->fetch(PDO::FETCH_BOTH)){
 				echo "<tr><td> $value[0] </td></tr>";
 			}
